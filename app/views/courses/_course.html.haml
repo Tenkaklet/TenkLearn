@@ -1,0 +1,19 @@
+.card
+  .card-body
+    %h5.card-title
+      .fa.fa-book-open
+      = link_to course.title, course_path(course)
+    %p.card-text
+    = course.description
+    %p.card-text
+      %small.text-muted
+        .far.fa-clock
+        = course.created_at.strftime('%d %b %Y')
+        .row
+        .fa.fa-chalkboard-teacher
+      %small
+        = course.user.email
+    .btn-group
+      = link_to 'Show', course, class: 'btn btn-success'
+      = link_to 'Edit', edit_course_path(course), class: 'btn btn-info'
+      = link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

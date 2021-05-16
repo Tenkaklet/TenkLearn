@@ -2,7 +2,7 @@
   .container-fluid
     %a.navbar-brand{:href => "/"}
       %i.fas.fa-flag
-      Brand
+      Tenk Learn
     %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarSupportedContent.collapse.navbar-collapse
@@ -10,12 +10,19 @@
         = link_to root_path, class: "nav-link #{'active font-weight-bold' if current_page?(root_path)}" do
           .fa.fa-home
           Home
+        = link_to courses_path, class: "nav-link #{'active font-weight-bold' if current_page?(courses_path)}" do
+          .fa.fa-book-open
+          Courses
+        = link_to new_course_path, class: "nav-link #{'active font-weight-bold' if current_page?(new_course_path)}" do
+          .fas.fa-plus
+          New Course
+
         %form.d-flex
           = form_tag(courses_path, method: :get) do
             .input-group
               = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: 'Find your next career', class: 'form-control-sm'
               %span.input-group-append
-                %button.btn.btn-primary.btn-sm{:type => "submit"}
+                %button.btn.btn-outline-info{:type => "submit"}
                   %span.fa.fa-search{"aria-hidden" => true }
       %ul.navbar-nav.ms-auto
         - if current_user
