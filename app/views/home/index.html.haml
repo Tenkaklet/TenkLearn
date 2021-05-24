@@ -1,4 +1,4 @@
-.p-5.mb-4.bg-light.rounded-3
+.p-5.mb-4.bg-light.rounded-3.border
   .container-fluid.py-5
     %h1.display-5.fw-bold Tenk Learn
     %p.col-md-8.fs-4 What would you like to learn today?
@@ -9,3 +9,51 @@
       %span.input-group-append
         %button.btn.btn-outline-info{:type => "submit"}
           %span.fa.fa-search{"aria-hidden" => "true"}
+
+.row.g-4.py-5.row-cols-1.row-cols-lg-4
+  .col.d-flex.align-items-start
+    .icon-square.bg-light.text-dark.flex-shrink-0.me-3
+      %i.fas.fa-graduation-cap.fa-5x
+    %div
+      %h2
+        = Course.count
+        Online Courses
+      %p Explore a variety of courses for everyone.
+  .col.d-flex.align-items-start
+    .icon-square.bg-light.text-dark.flex-shrink-0.me-3
+      %i.fas.fa-chalkboard-teacher.fa-5x
+    %div
+      %h2
+        = Course.distinct.count(:user_id)
+        Expert Instructors
+      %p Industry expert instructors.
+  .col.d-flex.align-items-start
+    .icon-square.bg-light.text-dark.flex-shrink-0.me-3
+      %i.fas.fa-user-graduate.fa-5x
+    %div
+      %h2
+        = User.count
+        Active Students
+      %p Join the knowledge community.
+  .col.d-flex.align-items-start
+    .icon-square.bg-light.text-dark.flex-shrink-0.me-3
+      %i.fas.fa-infinity.fa-5x
+    %div
+      %h2
+        Lifetime Access
+      %p Learn at your own pace.
+  %h2 Popular Courses
+.card-columns
+  - @courses.each do |course|
+    = render 'courses/course', course: course
+%hr
+  %h2 Top Rated Courses
+.card-columns
+  - @courses.each do |course|
+    = render 'courses/course', course: course
+%hr
+  %h2 Latest Courses
+  .card-columns
+    - @latest_courses.each do |course|
+      = render 'courses/course', course: course
+%hr
