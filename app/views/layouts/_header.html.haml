@@ -16,6 +16,9 @@
         = link_to new_course_path, class: "nav-link #{'active font-weight-bold' if current_page?(new_course_path)}" do
           .fas.fa-plus
           New Course
+        = link_to users_path, class: "nav-link #{'active font-weight-bold' if current_page?(users_path)}" do
+          .fas.fa-users
+          Users
 
         %form.d-flex
           = form_tag(courses_path, method: :get) do

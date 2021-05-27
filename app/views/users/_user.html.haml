@@ -1,0 +1,19 @@
+.card
+  .card-header
+    .fas.fa-user
+    = user.email
+  .card-footer
+    Signed up
+    = time_ago_in_words(user.created_at)
+    ago
+  .card-footer
+    .row
+      = user.sign_in_count
+    .row
+      = 'current_sign_in_at'.humanize
+    .row
+      = 'last_sign_in_at'.humanize
+    .row
+      = 'current_sign_in_ip'.humanize
+    .row
+      = 'last_sign_in_ip'.humanize
